@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE States [
+	<!ELEMENT States  (Default?, (State|Other)+)>
+	
+	<!ELEMENT Default EMPTY>
+	<!ATTLIST Default Name CDATA #REQUIRED
+	                  Abbreviation CDATA #REQUIRED>
+	                  
+	<!ELEMENT State EMPTY>
+	<!ATTLIST State Name CDATA #REQUIRED
+	                Abbreviation CDATA #REQUIRED>
+
+  <!ELEMENT Other EMPTY>
+  <!ATTLIST Other Name CDATA #REQUIRED
+	                Abbreviation CDATA #REQUIRED
+                  Military CDATA #FIXED "1">
+	
+]>
+<States>
+    <Default Name="Select..." Abbreviation="" />
+    <State Name="Alabama" Abbreviation="AL" />
+    <State Name="Alaska" Abbreviation="AK" />
+    <State Name="Arizona" Abbreviation="AZ" />
+    <State Name="Arkansas" Abbreviation="AR" />
+    <State Name="California" Abbreviation="CA" />
+    <State Name="Colorado" Abbreviation="CO" />
+    <State Name="Connecticut" Abbreviation="CT" />
+    <State Name="Delaware" Abbreviation="DE" />    
+    <State Name="Florida" Abbreviation="FL" />
+    <State Name="Georgia" Abbreviation="GA" />
+    <State Name="Hawaii" Abbreviation="HI" />
+    <State Name="Idaho" Abbreviation="ID" />
+    <State Name="Illinois" Abbreviation="IL" />
+    <State Name="Indiana" Abbreviation="IN" />
+    <State Name="Iowa" Abbreviation="IA" />
+    <State Name="Kansas" Abbreviation="KS" />
+    <State Name="Kentucky" Abbreviation="KY" />
+    <State Name="Louisiana" Abbreviation="LA" />
+    <State Name="Maine" Abbreviation="ME" />
+    <State Name="Maryland" Abbreviation="MD" />
+    <State Name="Massachussetts" Abbreviation="MA" />
+    <State Name="Michigan" Abbreviation="MI" />
+    <State Name="Minnesota" Abbreviation="MN" />
+    <State Name="Mississippi" Abbreviation="MS" />
+    <State Name="Missouri" Abbreviation="MO" />
+    <State Name="Montana" Abbreviation="MT" />
+    <State Name="Nebraska" Abbreviation="NE" />
+    <State Name="Nevada" Abbreviation="NV" />
+    <State Name="New Hampshire" Abbreviation="NH" />
+    <State Name="New Jersey" Abbreviation="NJ" />
+    <State Name="New Mexico" Abbreviation="NM" />
+    <State Name="New York" Abbreviation="NY" />
+    <State Name="North Carolina" Abbreviation="NC" />
+    <State Name="North Dakota" Abbreviation="ND" />
+    <State Name="Ohio" Abbreviation="OH" />
+    <State Name="Oklahoma" Abbreviation="OK" />
+    <State Name="Oregon" Abbreviation="OR" />
+    <State Name="Pennsylvania" Abbreviation="PA" />
+    <State Name="Rhode Island" Abbreviation="RI" />
+    <State Name="South Carolina" Abbreviation="SC" />
+    <State Name="South Dakota" Abbreviation="SD" />
+    <State Name="Tennessee" Abbreviation="TN" />
+    <State Name="Texas" Abbreviation="TX" />
+    <State Name="Utah" Abbreviation="UT" />
+    <State Name="Vermont" Abbreviation="VT" />
+    <State Name="Virginia" Abbreviation="VA" />
+    <State Name="Washington" Abbreviation="WA" />
+    <State Name="West Virgina" Abbreviation="WV" />
+    <State Name="Wisconsin" Abbreviation="WI" />
+    <State Name="Wyoming" Abbreviation="WY" />
+    <Other Name="American Samoa" Abbreviation="AS" />
+    <Other Name="District of Columbia" Abbreviation="DC" />
+    <Other Name="Guam" Abbreviation="GU" />
+    <Other Name="Northern Mariana Islands" Abbreviation="MP" />
+    <Other Name="Puerto Rico" Abbreviation="PR" />
+    <Other Name="Virgin Islands" Abbreviation="VI" />
+    <Other Name="Federated States of Micronesia" Abbreviation="FM" />
+    <Other Name="Marshall Islands" Abbreviation="MH" />
+    <Other Name="Palau" Abbreviation="PW" />
+    <Other Name="Armed Forces Americas" Abbreviation="AA" Military="1" />
+    <Other Name="Armed Forces Europe" Abbreviation="AE" Military="1"/>
+    <Other Name="Armed Forces Pacific" Abbreviation="AP" Military="1" />
+    <Other Name="Canal Zone" Abbreviation="CZ" />
+    <Other Name="Philippine Islands" Abbreviation="PI" />
+    <Other Name="Trust Territory of the Pacific Islands" Abbreviation="TT" />
+    <Other Name="Commonwealth of the Northern Mariana Islands" Abbreviation="CM" />
+</States>

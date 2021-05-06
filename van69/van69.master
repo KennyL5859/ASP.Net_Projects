@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="van69.master.cs" Inherits="van69_van69" %>
+
+
+<!DOCTYPE html [
+   <!ENTITY nbsp "&#160;">
+]> 
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="cis2350.css" rel="stylesheet" type="text/css" media="all" />
+    <asp:ContentPlaceHolder id="cphHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table>
+            <tr>
+
+                <%-- Links to all assignments on left hand side of page --%>
+                <td style="padding: 20px; background-color: #18966a">
+                    <h3>Labs</h3>
+
+                    <ul class="main">
+                        <li><a href="Lab01.html">Lab #1</a></li>
+                        <li><a href="Lab02.aspx">Lab #2</a></li>
+                        <li><a href="Lab03.aspx">Lab #3</a></li>
+                        <li><a href="Lab04.aspx">Lab #4</a></li>
+                        <li><a href="Lab06.aspx">Lab #6</a>
+                            <ul class="sub">
+                                <li><a href="Lab06a.aspx">Lab #6a</a></li>
+                                <li><a href="Lab06b.aspx">Lab #6b</a></li>
+                                <li><a href="Lab06c.aspx">Lab #6c</a></li>
+                                <li><a href="Lab06d.aspx">Lab #6d</a></li>
+                                <li><a href="Lab06e.aspx">Lab #6e</a></li>
+                            </ul>
+                        </li>   
+                        <li><a href="Lab07.aspx">Lab #7</a></li>
+                        <li><a href="Lab08.aspx">Lab #8</a></li>
+                        <li><a href="Lab09.aspx">Lab #9</a></li>
+                    </ul>
+                    <br /><br />
+
+                    <h3>Projects</h3>
+                    
+                    <ul>
+                        <li><a href="Project1.aspx">Project #1</a></li>
+                        <li><a href="Project2.aspx">Project #2</a></li>
+                        <li><a href="Project3.aspx">Project #3</a></li>
+                    </ul>
+                </td>
+
+                <td style="padding: 20px; background-color: #0fd17a">
+                    <asp:ContentPlaceHolder id="cphBody" runat="server">        
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+
+        <br /><br />
+
+        <img src="http://www.thatlink.com/classes/images/html5-css3.jpg" alt="Validate" usemap="#ValidationMap" />
+        <map name="ValidationMap">
+            <area shape="rect" coords="0,0,90,79" alt="XHTML5 Validation"
+                href="/Validate.aspx?type=xhtml5&amp;url=referrer" />
+            <area shape="rect" coords="91,0,180,79" alt="CSS3 Validation"
+                href="/Validate.aspx?type=css3&amp;url=referrer" />
+        </map>
+
+    </div>
+    </form>
+</body>
+</html>

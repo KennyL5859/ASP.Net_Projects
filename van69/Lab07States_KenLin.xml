@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<states>
+  <state text="All" value="All"/>
+  <state text="Alabama" value="AL"/>
+  <state text="Alaska" value="AK"/>
+  <state text="Arizona" value="AZ"/>
+  <state text="Arkansas" value="AR"/>
+  <state text="California" value="CA"/>
+  <state text="Colorado" value="CO"/>
+  <state text="Connecticut" value="CT"/>
+  <state text="Delaware" value="DE"/>
+  <state text="District of Columbia" value="DC"/>
+  <state text="Florida" value="FL"/>
+  <state text="Georgia" value="GA"/>
+  <state text="Hawaii" value="HI"/>
+  <state text="Idaho" value="ID"/>
+  <state text="Illinois" value="IL"/>
+  <state text="Indiana" value="IN"/>
+  <state text="Iowa" value="IA"/>
+  <state text="Kansas" value="KS"/>
+  <state text="Kentucky" value="KY"/>
+  <state text="Louisiana" value="LA"/>
+  <state text="Maine" value="ME"/>
+  <state text="Maryland" value="MD"/>
+  <state text="Massachussetts" value="MA"/>
+  <state text="Michigan" value="MI"/>
+  <state text="Minnesota" value="MN"/>
+  <state text="Mississippi" value="MS"/>
+  <state text="Missouri" value="MO"/>
+  <state text="Montana" value="MT"/>
+  <state text="Nebraska" value="NE"/>
+  <state text="Nevada" value="NV"/>
+  <state text="New Hampshire" value="NH"/>
+  <state text="New Jersey" value="NJ"/>
+  <state text="New Mexico" value="NM"/>
+  <state text="New York" value="NY"/>
+  <state text="North Carolina" value="NC"/>
+  <state text="North Dakota" value="ND"/>
+  <state text="Ohio" value="OH"/>
+  <state text="Oklahoma" value="OK"/>
+  <state text="Oregon" value="OR"/>
+  <state text="Pennsylvania" value="PA"/>
+  <state text="Rhode Island" value="RI"/>
+  <state text="South Carolina" value="SC"/>
+  <state text="South Dakota" value="SD"/>
+  <state text="Tennessee" value="TN"/>
+  <state text="Texas" value="TX"/>
+  <state text="Utah" value="UT"/>
+  <state text="Vermont" value="VT"/>
+  <state text="Virginia" value="VA"/>
+  <state text="Washington" value="WA"/>
+  <state text="West Virgina" value="WV"/>
+  <state text="Wisconsin" value="WI"/>
+  <state text="Wyoming" value="WY"/>
+</states>

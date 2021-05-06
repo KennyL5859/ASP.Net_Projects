@@ -1,0 +1,77 @@
+﻿
+/*
+Name:         Kenneth Lin
+Class:        CIS-2350
+Assignment:   Lab #3 Spring 2021
+File:         cis2350.css
+Purpose:      External CSS file for the webpage
+*/
+
+
+body {
+    background-color: #bdecf0;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+}
+
+form {
+    padding: 20px 20px 20px 20px;
+    width: 94%;
+    margin: auto;   
+}
+
+h1 {  
+    font-size: 30px;
+    color: #1051b3;
+}
+
+h2 {
+    color: #02176b;  
+}
+
+a {
+    padding-right: 15px;
+}
+
+td:nth-child(2) ul {
+    list-style-type: none;
+}
+
+.main {
+    list-style-type: square;
+}
+
+.sub {
+    list-style-type: circle;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.linkBtn {
+    background-color: #402696;
+    border: 2px solid #0d032e;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+/*table td {
+    border: 1px solid black;
+}*/
+
+
+
+pre {
+    font-family: Consolas, monaco, monospace;
+    font-size: 16px;
+    background-color: #88d9eb;
+    border-radius: 10px; 
+    text-align: center;
+}
+
+
+
+

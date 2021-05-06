@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Advertisements>
+  <Ad>
+    <ImageUrl>Lab03_Images/Audi.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Audi_e-tron_(2018)</NavigateUrl>
+    <AlternateText>Audi E-Tron</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+  
+  <Ad>
+    <ImageUrl>Lab03_Images/BMW.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/BMW_i3</NavigateUrl>
+    <AlternateText>BMW i3</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+  
+  <Ad>
+    <ImageUrl>Lab03_Images/Chevy.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Chevrolet_Bolt</NavigateUrl>
+    <AlternateText>Chevy Bolt</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Ford.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Ford_Mustang_Mach-E</NavigateUrl>
+    <AlternateText>Ford Mustang Mach-E</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Honda.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Honda_Clarity#Electric</NavigateUrl>
+    <AlternateText>Honda Clarity</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Hyundai.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Hyundai_Kona</NavigateUrl>
+    <AlternateText>Hyundai Kona</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Mercedes.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Mercedes-Benz_EQC</NavigateUrl>
+    <AlternateText>Mercedes EQC</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/NIO.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/NIO_EC6</NavigateUrl>
+    <AlternateText>NIO EC6</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Nissan.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Nissan_Leaf</NavigateUrl>
+    <AlternateText>Nissan Leaf</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>Lab03_Images/Tesla.jpg</ImageUrl>
+    <NavigateUrl>https://en.wikipedia.org/wiki/Tesla_Model_S</NavigateUrl>
+    <AlternateText>Tesla Model S</AlternateText>
+    <Impressions>100</Impressions>
+  </Ad>  
+</Advertisements>

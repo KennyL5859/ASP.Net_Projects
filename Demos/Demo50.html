@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Demo 50 - Old School Form</title>
+    <link href="cis2350.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+    <h1>Demo 50 - Old School Form</h1>
+    
+    <!-- 
+        Try: 
+            http://httpbin.org/post 
+            Demo50Process.aspx
+    -->
+    <form name="htmlform" method="post" action="Demo50Process.aspx">
+        <table style="width: 450px;">
+            <tr>
+                 <td>
+                      <label for="first_name">First Name *</label>
+                 </td>
+                 <td>
+                      <input  type="text" id="first_name" name="first_name" maxlength="50" size="30" />
+                 </td>
+            </tr>
+             
+            <tr>
+                 <td>
+                  <label for="last_name">Last Name *</label>
+                 </td>
+                 <td>
+                      <input  type="text" id="last_name" name="last_name" maxlength="50" size="30" />
+                 </td>
+            </tr>
+            <tr>
+                 <td>
+                      <label for="email">Email Address *</label>
+                 </td>
+                 <td>
+                      <input  type="text" id="email" name="email" maxlength="80" size="30" />
+                 </td>
+            </tr>
+            <tr>
+                 <td>
+                      <label for="telephone">Telephone Number</label>
+                 </td>
+                 <td>
+                      <input  type="text" id="telephone" name="telephone" maxlength="30" size="30" />
+                 </td>
+            </tr>
+            <tr>
+                 <td>
+                      <label for="comments">Comments *</label>
+                 </td>
+                 <td>
+                      <textarea  id="comments" name="comments" cols="25" rows="6"></textarea>
+                 </td>
+            </tr>
+            <tr>
+                 <td colspan="2" style="text-align:center">
+                      <input type="submit" value="Submit" />  
+                 </td>
+            </tr>
+        </table>
+    </form>
+
+    <br />
+    <img src="http://www.thatlink.com/classes/images/html5-css3.jpg" alt="Validate" usemap="#ValidationMap" />
+    <map name="ValidationMap">
+        <area shape="rect" coords="0,0,90,79" alt="HTML5 Validation"
+            href="http://www.thatlink.com/Classes/Public/Validate.aspx?type=xhtml5&amp;url=referrer" />
+        <area shape="rect" coords="91,0,180,79" alt="CSS3 Validation"
+            href="http://www.thatlink.com/Classes/Public/Validate.aspx?type=css3&amp;url=referrer" />
+    </map>    
+</body>
+
+</html>
