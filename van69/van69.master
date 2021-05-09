@@ -40,6 +40,7 @@
                         <li><a href="Lab07.aspx">Lab #7</a></li>
                         <li><a href="Lab08.aspx">Lab #8</a></li>
                         <li><a href="Lab09.aspx">Lab #9</a></li>
+                        <li><a href="Lab10.aspx">Lab #10</a></li>
                     </ul>
                     <br /><br />
 
@@ -49,6 +50,7 @@
                         <li><a href="Project1.aspx">Project #1</a></li>
                         <li><a href="Project2.aspx">Project #2</a></li>
                         <li><a href="Project3.aspx">Project #3</a></li>
+                        <li><a href="Project4.aspx">Project #4</a></li>
                     </ul>
                 </td>
 
