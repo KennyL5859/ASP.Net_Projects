@@ -6,6 +6,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" Runat="Server">
     <div>
+        <h1>Welcome to Holiday Inn</h1>
+
+        <table>
+            <tr>
+                <td>
+                    <a href="Project4.aspx">
+                        <img src="Project4_Buttons/Home_Select.png" alt="Home" /></a>
+                </td>
+            </tr>
+        </table>
 
     </div>
 </asp:Content>
