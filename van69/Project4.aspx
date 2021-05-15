@@ -13,13 +13,13 @@
                 <td>
                     <a href="Project4.aspx">
                         <img src="Project4_Buttons/Home_Select.png" alt="Home" /></a><br />
-                    <a href="Project4CheckIn.aspx">
+                    <a href="Project4_CheckIn.aspx">
                         <img src="Project4_Buttons/CheckIn_Unselect.png" alt="Home" /></a><br />
-                    <a href="Project4NewMember.aspx">
+                    <a href="Project4_NewMember.aspx">
                         <img src="Project4_Buttons/NewMember_Unselect.png" alt="Home" /></a><br />
-                    <a href="Project4MemberList.aspx">
+                    <a href="Project4_MemberList.aspx">
                         <img src="Project4_Buttons/MemberList_Unselect.png" alt="Home" /></a><br />
-                    <a href="Project4RoomList.aspx">
+                    <a href="Project4_RoomList.aspx">
                         <img src="Project4_Buttons/RoomList_Unselect.png" alt="Home" /></a><br />
                 </td>
                 <td>
