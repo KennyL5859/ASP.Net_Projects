@@ -122,4 +122,14 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
     }
 
 
+
+    protected void grdCheckInMembers_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int row = Convert.ToInt32(e.CommandArgument);
+        GridViewRow selectedRow = grdCheckInMembers.Rows[row];
+        string email = selectedRow.Cells[4].Text;
+
+        
+
+    }
 }

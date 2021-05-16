@@ -63,6 +63,21 @@
                             <td runat="server" id="f165">165</td>
                         </tr>
                     </table>
+
+                    <br />
+                    <br />
+
+                    <asp:SqlDataSource ID="sqlCheckInMembers" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionDB01 %>' SelectCommand="SELECT * FROM [van69GuestContactView] ORDER BY [RoomNbr]"></asp:SqlDataSource>
+                    <asp:GridView ID="grdCheckInMembers" runat="server" DataSourceID="sqlCheckInMembers" AutoGenerateColumns="False" RowStyle-BorderStyle="Solid" RowStyle-BorderColor="Black" RowStyle-BorderWidth="2" HeaderStyle-BorderWidth="2" HeaderStyle-BorderColor="Black" HeaderStyle-BorderStyle="Solid" OnRowCommand="grdCheckInMembers_RowCommand">
+                        <Columns>
+                            <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName"></asp:BoundField>
+                            <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName"></asp:BoundField>
+                            <asp:BoundField DataField="RoomNbr" HeaderText="Room #" SortExpression="RoomNbr"></asp:BoundField>
+                            <asp:BoundField DataField="CheckInDate" HeaderText="Check In Date" SortExpression="CheckInDate"></asp:BoundField>
+                            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
+                            <asp:ButtonField Text="Email" CommandName="Email" HeaderText="&#160;" />
+                        </Columns>
+                    </asp:GridView>
                 </td>
             </tr>
 
