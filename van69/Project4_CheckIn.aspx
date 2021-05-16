@@ -17,16 +17,20 @@
                         <img src="Project4_Buttons/NewMember_Unselect.png" alt="Home" /></a><br />
                     <a href="Project4_MemberList.aspx">
                         <img src="Project4_Buttons/MemberList_Unselect.png" alt="Home" /></a><br />
-                    <a href="Project4_RoomList.aspx">
+                    <a href="Project4_RoomLists.aspx">
                         <img src="Project4_Buttons/RoomList_Unselect.png" alt="Home" /></a><br />
                 </td>
                 <td>
+                    Members:
+                    <br />
                     <asp:SqlDataSource ID="sqlMembers" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionDB01 %>' SelectCommand="SELECT * FROM [van69GuestInfoView] ORDER BY [LastName]"></asp:SqlDataSource>
                     <asp:ListBox ID="lstMembers" runat="server" DataSourceID="sqlMembers"
                         DataTextField="FullName" DataValueField="GuestID" Rows="10"></asp:ListBox>
 
                 </td>
                 <td>
+                    Rooms Avaiable:
+                    <br />
                     <asp:SqlDataSource ID="sqlRooms" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionDB01 %>' SelectCommand="SELECT * FROM [van69RoomAvailView] ORDER BY [RoomNbr]"></asp:SqlDataSource>
                     <asp:ListBox ID="lstRooms" runat="server" DataSourceID="sqlRooms"
                         DataTextField="RoomDesc" DataValueField="RoomNbr" Rows="10"></asp:ListBox>
