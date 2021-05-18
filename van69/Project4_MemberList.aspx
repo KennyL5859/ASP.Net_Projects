@@ -72,6 +72,9 @@
                             
                         </Columns>
                     </asp:GridView>
+                    <br />
+                    <asp:ImageButton ID="imgBtnExcel" runat="server" ImageUrl="Project4_Buttons/Excel.png"
+                         AlternateText="Excel Icon" Width="30px" Height="30px" OnClick="imgBtnExcel_Click"/>
                 </td>
 
 

@@ -13,11 +13,62 @@ using System.Net;
 using System.IO;
 
 
+//string x = CheckedInRooms.Count.ToString();
+//string message = x.ToString();
+//string script = "alert('" + message + "')";
+//ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
+
+
 public partial class van69_Project4_RoomLists : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        // when page loads for first time, assign session with unique value
+        if (!IsPostBack)
+            Session["update"] = Server.UrlEncode(System.DateTime.Now.ToString());
+
+        UpdateRoomGrids();
+   
+    }
+
+    protected void grdCheckInMembers_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+        if (Session["update"].ToString() == ViewState["update"].ToString())
+        {
+            List<Customer> customerLists = new List<Customer>();
+            customerLists = LoadCustListFromSQL();            
+
+            int row = Convert.ToInt32(e.CommandArgument);
+            GridViewRow selectedRow = grdCheckInMembers.Rows[row];
+            Customer selectedCustomer = customerLists[row];
+
+
+            if (e.CommandName == "Email")
+            {
+                // call send email method
+                SendEmail(selectedCustomer);
+            }
+            else if (e.CommandName == "CheckOut")
+            {
+                CheckOutRooms(selectedCustomer);                
+                grdCheckInMembers.DataBind();
+                Response.Redirect(Request.RawUrl);
+            }
+
+            // update the session
+            Session["update"] = Server.UrlEncode(System.DateTime.Now.ToString());          
+        
+        }
+        else
+        {
+            grdCheckInMembers.DataBind();
+        }
+    }
+
+    private void UpdateRoomGrids()
+    {
         // create a list of rooms available and all rooms in hotel
         List<int> RoomsAvailable = new List<int>();
         List<int> AllRoomsList = new List<int>();
@@ -31,6 +82,48 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
                                         555, 596, 605, 620, 630, 699});
 
 
+        RoomsAvailable = GetAvailRoomNbrs();
+        CheckedInRooms = GetCheckedInRoomsInfo();
+
+
+        // loop thru all rooms, if available make blue else make red and put occupant name
+        for (int i = 0; i < AllRoomsList.Count; i++)
+        {
+            if (RoomsAvailable.Contains(AllRoomsList[i]))
+            {
+                string RoomID = "f" + AllRoomsList[i].ToString();
+                HtmlTableCell td = (HtmlTableCell)FindControlRecursive(Page, RoomID);
+                td.BgColor = "#03dffc";
+            }
+            else
+            {
+                string RoomID = "f" + AllRoomsList[i].ToString();
+                int roomNbr = AllRoomsList[i];
+                HtmlTableCell td = (HtmlTableCell)FindControlRecursive(Page, RoomID);
+                var CheckInObj = CheckedInRooms.FirstOrDefault(x => x.RoomNbr == roomNbr);
+                td.BgColor = "#e6296e";
+                td.InnerHtml = roomNbr.ToString() + "<br/>" + CheckInObj.GuestName;
+            }
+        }
+    }
+
+
+    // find the controls on page recursively
+    private Control FindControlRecursive(Control rootControl, string controlID)
+    {
+        if (rootControl.ID == controlID) return rootControl;
+
+        foreach (Control controlToSearch in rootControl.Controls)
+        {
+            Control controlToReturn = FindControlRecursive(controlToSearch, controlID);
+            if (controlToReturn != null) return controlToReturn;
+        }
+        return null;
+    }
+
+    private List<int> GetAvailRoomNbrs()
+    {
+        List<int> RoomsAvailable = new List<int>();
         SqlConnection myConnection;
         SqlCommand myCommand;
         string myConnectString = ConfigurationManager.ConnectionStrings["ConnectionDB01"].ConnectionString;
@@ -39,7 +132,7 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
         using (myConnection = new SqlConnection(myConnectString))
         {
             using (myCommand = new SqlCommand("SELECT RoomNbr FROM van69RoomAvailView", myConnection))
-            {           
+            {
                 myCommand.CommandType = CommandType.Text;
                 myConnection.Open();
 
@@ -47,12 +140,25 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
                 {
                     while (sdr.Read())
                     {
-                        RoomsAvailable.Add(Convert.ToInt32(sdr["RoomNbr"]));       
+                        RoomsAvailable.Add(Convert.ToInt32(sdr["RoomNbr"]));
                     }
                 }
-
                 myConnection.Close();
             }
+        }
+        return RoomsAvailable;
+    }
+
+    private List<CheckIn> GetCheckedInRoomsInfo()
+    {
+        List<CheckIn> CheckedInRooms = new List<CheckIn>();
+        SqlConnection myConnection;
+        SqlCommand myCommand;
+        string myConnectString = ConfigurationManager.ConnectionStrings["ConnectionDB01"].ConnectionString;
+
+        // open sql connection and read all available room numbers into RoomsAvailable list
+        using (myConnection = new SqlConnection(myConnectString))
+        {       
 
             // read room number, guest id, and guest name into list of CheckIn class
             using (myCommand = new SqlCommand("SELECT RoomNbr, GuestID, FullName FROM van69CheckInView", myConnection))
@@ -74,57 +180,11 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
                 }
                 myConnection.Close();
             }
-
         }
-
-
-        //string x = CheckedInRooms.Count.ToString();
-        //string message = x.ToString();
-        //string script = "alert('" + message + "')";
-        //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-
-        //string test = "f" + "302";
-        //HtmlTableCell lbl = (HtmlTableCell)FindControlRecursive(Page, test);
-        //lbl.BgColor = "blue";
-
-
-        for (int i = 0; i < AllRoomsList.Count; i++)
-        {
-            // if room is available, make is light blue
-            if (RoomsAvailable.Contains(AllRoomsList[i]))
-            {
-                string RoomID = "f" + AllRoomsList[i].ToString();
-                HtmlTableCell td = (HtmlTableCell)FindControlRecursive(Page, RoomID);
-                td.BgColor = "#03dffc";
-            }
-            // make is red and display the current occupant name
-            else
-            {
-                string RoomID = "f" + AllRoomsList[i].ToString();
-                int roomNbr = AllRoomsList[i];
-                HtmlTableCell td = (HtmlTableCell)FindControlRecursive(Page, RoomID);         
-                var CheckInObj = CheckedInRooms.FirstOrDefault(x => x.RoomNbr == roomNbr);
-                td.BgColor = "#e6296e";
-                td.InnerHtml = roomNbr.ToString() + "<br/>" + CheckInObj.GuestName;
-            }
-        }        
+        return CheckedInRooms;
     }
 
-    // find the controls on page recursively 
-    private Control FindControlRecursive(Control rootControl, string controlID)
-    {
-        if (rootControl.ID == controlID) return rootControl;
-
-        foreach (Control controlToSearch in rootControl.Controls)
-        {
-            Control controlToReturn = FindControlRecursive(controlToSearch, controlID);
-            if (controlToReturn != null) return controlToReturn;
-        }
-        return null;
-    }
-
-
-    protected void grdCheckInMembers_RowCommand(object sender, GridViewCommandEventArgs e)
+    private List<Customer> LoadCustListFromSQL()
     {
         List<Customer> customerLists = new List<Customer>();
 
@@ -156,14 +216,28 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
                 myConnection.Close();
             }
         }
+        return customerLists;
+    }
 
-        int row = Convert.ToInt32(e.CommandArgument);
-        GridViewRow selectedRow = grdCheckInMembers.Rows[row];
-        Customer selecteCustomer = customerLists[row];
+    protected override void OnPreRender(EventArgs e)
+    {
+        ViewState["update"] = Session["update"];
+    }
 
-        // call send email method
-        SendEmail(selecteCustomer);
+    private void CheckOutRooms(Customer selectedCustomer)
+    {
+        SqlConnection myConnection;
+        SqlCommand myCommand;
+        string myConnectString = ConfigurationManager.ConnectionStrings["ConnectionDB01"].ConnectionString;
 
+        using (myConnection = new SqlConnection(myConnectString))
+        using (myCommand = myConnection.CreateCommand())
+        {
+            myConnection.Open();
+            myCommand.CommandText = "DELETE FROM van69CheckIn WHERE RoomNbr = @RoomNbr";
+            myCommand.Parameters.AddWithValue("@RoomNbr", selectedCustomer.RoomNbr);
+            myCommand.ExecuteNonQuery();
+        }
     }
 
     private void SendEmail(Customer customer)
@@ -231,6 +305,5 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
         string success = "Email successfully sent";
         string script3 = "alert('" + success + "')";
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script3, true);
-
     }
 }
