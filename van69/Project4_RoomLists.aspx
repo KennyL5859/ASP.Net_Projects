@@ -75,7 +75,7 @@
                             <asp:BoundField DataField="RoomNbr" HeaderText="Room #" SortExpression="RoomNbr"></asp:BoundField>
                             <asp:BoundField DataField="CheckInDate" HeaderText="Check In Date" SortExpression="CheckInDate"></asp:BoundField>
                             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
-                            <asp:ButtonField Text="Email" CommandName="Email" HeaderText="&#160;" />
+                           <%-- <asp:ButtonField Text="Email" CommandName="Email" HeaderText="&#160;" />--%>
                             <asp:ButtonField Text="Check Out" CommandName="CheckOut" HeaderText="&#160;" />
                         </Columns>
                     </asp:GridView>

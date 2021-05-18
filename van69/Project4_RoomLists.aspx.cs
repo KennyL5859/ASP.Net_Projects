@@ -18,7 +18,29 @@ using System.IO;
 //string script = "alert('" + message + "')";
 //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
+public class CheckIn
+{
+    public int RoomNbr { get; set; }
+    public string GuestID { get; set; }
+    public string GuestName { get; set; }
 
+    public CheckIn()
+    {
+    }
+}
+
+public class Customer
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string RoomNbr { get; set; }
+    public string EmailAddr { get; set; }
+
+    public Customer()
+    {
+
+    }
+}
 
 public partial class van69_Project4_RoomLists : System.Web.UI.Page
 {
@@ -44,13 +66,7 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
             GridViewRow selectedRow = grdCheckInMembers.Rows[row];
             Customer selectedCustomer = customerLists[row];
 
-
-            if (e.CommandName == "Email")
-            {
-                // call send email method
-                SendEmail(selectedCustomer);
-            }
-            else if (e.CommandName == "CheckOut")
+            if (e.CommandName == "CheckOut")
             {
                 CheckOutRooms(selectedCustomer);                
                 grdCheckInMembers.DataBind();
@@ -240,70 +256,70 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
         }
     }
 
-    private void SendEmail(Customer customer)
-    {
-        // if there is no email for customer, then warn the user
-        if (customer.EmailAddr == "")
-        {
-            string message = "This is no email for this customer";
-            string script = "alert('" + message + "')";
-            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            return;
-        }
+    //private void SendEmail(Customer customer)
+    //{
+    //    // if there is no email for customer, then warn the user
+    //    if (customer.EmailAddr == "")
+    //    {
+    //        string message = "This is no email for this customer";
+    //        string script = "alert('" + message + "')";
+    //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+    //        return;
+    //    }
 
-        // dictionary with floor level words
-        Dictionary<int, string> FloorLevels = new Dictionary<int, string>();
-        FloorLevels.Add(1, "1st");
-        FloorLevels.Add(2, "2nd");
-        FloorLevels.Add(3, "3rd");
-        FloorLevels.Add(4, "4th");
-        FloorLevels.Add(5, "5th");
-        FloorLevels.Add(6, "6th");     
+    //    // dictionary with floor level words
+    //    Dictionary<int, string> FloorLevels = new Dictionary<int, string>();
+    //    FloorLevels.Add(1, "1st");
+    //    FloorLevels.Add(2, "2nd");
+    //    FloorLevels.Add(3, "3rd");
+    //    FloorLevels.Add(4, "4th");
+    //    FloorLevels.Add(5, "5th");
+    //    FloorLevels.Add(6, "6th");     
 
-        // write subject and get floor number in words
-        string subject = "Checked in to room " + customer.RoomNbr;
-        int floorNbr = Convert.ToInt32(customer.RoomNbr.ToCharArray()[0].ToString());
-        string floorWord = FloorLevels[floorNbr];
+    //    // write subject and get floor number in words
+    //    string subject = "Checked in to room " + customer.RoomNbr;
+    //    int floorNbr = Convert.ToInt32(customer.RoomNbr.ToCharArray()[0].ToString());
+    //    string floorWord = FloorLevels[floorNbr];
 
-        // message body
-        string body = customer.FirstName + "," + "<br/><br/>" + 
-            "Welcome to Holiday Inn Express, you have checked into room " + customer.RoomNbr + "."
-            + " Room " + customer.RoomNbr + " is located on the " + floorWord + " floor.<br/>" +
-            "Thank you for choosing Holiday Inn Express and we hope you enjoy your stay."
-            + "<br/><br/><br/>" + "Best Regards," + "<br/>" + "Holiday Inn Express" + "<br/>"
-            + "1-888-586-5869";
+    //    // message body
+    //    string body = customer.FirstName + "," + "<br/><br/>" + 
+    //        "Welcome to Holiday Inn Express, you have checked into room " + customer.RoomNbr + "."
+    //        + " Room " + customer.RoomNbr + " is located on the " + floorWord + " floor.<br/>" +
+    //        "Thank you for choosing Holiday Inn Express and we hope you enjoy your stay."
+    //        + "<br/><br/><br/>" + "Best Regards," + "<br/>" + "Holiday Inn Express" + "<br/>"
+    //        + "1-888-586-5869";
 
-        string to = customer.EmailAddr;
-        string from = "holidayinncheckin@gmail.com";
-        MailMessage msg = new MailMessage(from, to);
+    //    string to = customer.EmailAddr;
+    //    string from = "holidayinncheckin@gmail.com";
+    //    MailMessage msg = new MailMessage(from, to);
 
-        msg.Subject = subject;
-        msg.Body = body;
-        msg.IsBodyHtml = true;
-        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-        System.Net.NetworkCredential credential =
-            new System.Net.NetworkCredential("holidayinncheckin@gmail.com", "dnya xanj zjbn yoer");
+    //    msg.Subject = subject;
+    //    msg.Body = body;
+    //    msg.IsBodyHtml = true;
+    //    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+    //    System.Net.NetworkCredential credential =
+    //        new System.Net.NetworkCredential("holidayinncheckin@gmail.com", "dnya xanj zjbn yoer");
 
-        client.EnableSsl = true;
-        client.UseDefaultCredentials = false;
-        client.Credentials = credential;
+    //    client.EnableSsl = true;
+    //    client.UseDefaultCredentials = false;
+    //    client.Credentials = credential;
 
-        // try sending the email, prompt user if there is an error
-        try
-        {
-            client.Send(msg);
-        }
-        catch (Exception ex)
-        {
-            string error = "Error sending message, call your administrator";
-            string script2 = "alert('" + error + "')";
-            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-            return;
-        }
+    //    // try sending the email, prompt user if there is an error
+    //    try
+    //    {
+    //        client.Send(msg);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        string error = "Error sending message, call your administrator";
+    //        string script2 = "alert('" + error + "')";
+    //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+    //        return;
+    //    }
 
-        // prompt user if email successfully sent
-        string success = "Email successfully sent";
-        string script3 = "alert('" + success + "')";
-        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script3, true);
-    }
+    //    // prompt user if email successfully sent
+    //    string success = "Email successfully sent";
+    //    string script3 = "alert('" + success + "')";
+    //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script3, true);
+    //}
 }

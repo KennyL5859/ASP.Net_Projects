@@ -15,8 +15,6 @@ public class Customer
 
     public Customer()
     {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
+
+     }
 }

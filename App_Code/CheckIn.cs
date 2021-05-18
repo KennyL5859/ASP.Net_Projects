@@ -14,8 +14,6 @@ public class CheckIn
 
     public CheckIn()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+
     }
 }
