@@ -8,6 +8,9 @@ using System.Web.UI.HtmlControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Net.Mail;
+using System.Net;
+using System.IO;
 
 
 public partial class van69_Project4_RoomLists : System.Web.UI.Page
@@ -104,8 +107,7 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
                 td.BgColor = "#e6296e";
                 td.InnerHtml = roomNbr.ToString() + "<br/>" + CheckInObj.GuestName;
             }
-        }
-        
+        }        
     }
 
     // find the controls on page recursively 
@@ -122,14 +124,113 @@ public partial class van69_Project4_RoomLists : System.Web.UI.Page
     }
 
 
-
     protected void grdCheckInMembers_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        List<Customer> customerLists = new List<Customer>();
+
+        SqlConnection myConnection;
+        SqlCommand myCommand;
+        string myConnectString = ConfigurationManager.ConnectionStrings["ConnectionDB01"].ConnectionString;
+
+        // load customer contact view into a list of customer objects
+        using (myConnection = new SqlConnection(myConnectString))
+        {
+            using (myCommand = new SqlCommand("SELECT FirstName, LastName, RoomNbr, Email FROM van69GuestContactView", myConnection))
+            {
+                myCommand.CommandType = CommandType.Text;
+                myConnection.Open();
+
+                using (SqlDataReader sdr = myCommand.ExecuteReader())
+                {
+                    while (sdr.Read())
+                    {
+                        customerLists.Add(new Customer
+                        {
+                            FirstName = sdr["FirstName"].ToString(),
+                            LastName = sdr["LastName"].ToString(),
+                            RoomNbr = sdr["RoomNbr"].ToString(),
+                            EmailAddr = sdr["Email"].ToString()
+                        });
+                    }
+                }
+                myConnection.Close();
+            }
+        }
+
         int row = Convert.ToInt32(e.CommandArgument);
         GridViewRow selectedRow = grdCheckInMembers.Rows[row];
-        string email = selectedRow.Cells[4].Text;
+        Customer selecteCustomer = customerLists[row];
 
-        
+        // call send email method
+        SendEmail(selecteCustomer);
+
+    }
+
+    private void SendEmail(Customer customer)
+    {
+        // if there is no email for customer, then warn the user
+        if (customer.EmailAddr == "")
+        {
+            string message = "This is no email for this customer";
+            string script = "alert('" + message + "')";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            return;
+        }
+
+        // dictionary with floor level words
+        Dictionary<int, string> FloorLevels = new Dictionary<int, string>();
+        FloorLevels.Add(1, "1st");
+        FloorLevels.Add(2, "2nd");
+        FloorLevels.Add(3, "3rd");
+        FloorLevels.Add(4, "4th");
+        FloorLevels.Add(5, "5th");
+        FloorLevels.Add(6, "6th");     
+
+        // write subject and get floor number in words
+        string subject = "Checked in to room " + customer.RoomNbr;
+        int floorNbr = Convert.ToInt32(customer.RoomNbr.ToCharArray()[0].ToString());
+        string floorWord = FloorLevels[floorNbr];
+
+        // message body
+        string body = customer.FirstName + "," + "<br/><br/>" + 
+            "Welcome to Holiday Inn Express, you have checked into room " + customer.RoomNbr + "."
+            + " Room " + customer.RoomNbr + " is located on the " + floorWord + " floor.<br/>" +
+            "Thank you for choosing Holiday Inn Express and we hope you enjoy your stay."
+            + "<br/><br/><br/>" + "Best Regards," + "<br/>" + "Holiday Inn Express" + "<br/>"
+            + "1-888-586-5869";
+
+        string to = customer.EmailAddr;
+        string from = "holidayinncheckin@gmail.com";
+        MailMessage msg = new MailMessage(from, to);
+
+        msg.Subject = subject;
+        msg.Body = body;
+        msg.IsBodyHtml = true;
+        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+        System.Net.NetworkCredential credential =
+            new System.Net.NetworkCredential("holidayinncheckin@gmail.com", "dnya xanj zjbn yoer");
+
+        client.EnableSsl = true;
+        client.UseDefaultCredentials = false;
+        client.Credentials = credential;
+
+        // try sending the email, prompt user if there is an error
+        try
+        {
+            client.Send(msg);
+        }
+        catch (Exception ex)
+        {
+            string error = "Error sending message, call your administrator";
+            string script2 = "alert('" + error + "')";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+            return;
+        }
+
+        // prompt user if email successfully sent
+        string success = "Email successfully sent";
+        string script3 = "alert('" + success + "')";
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script3, true);
 
     }
 }
