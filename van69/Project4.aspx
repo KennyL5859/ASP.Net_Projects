@@ -29,22 +29,24 @@
                         <br />
                         <br />
                         <strong>Check-In</strong> page will let you check in a client by selecting the <br />
-                        client's name and the room number
+                        client's name and the room number.
                         <br />
                         <br />
                         <strong>New Member</strong> page will let you add new members to the members list.
                         <br />
                         <br />
-                        <strong>Member List</strong> page will display a list of current members and what <br />
-                        rooms they are checked into.
+                        <strong>Member List</strong> page will display a list of current members that can <br />
+                        either updated or deleted.
                         <br />
                         <br />
-                        <strong>Room List</strong> page displays the list of rooms in the hotel.
+                        <strong>Room List</strong> page displays the list of rooms in the hotel and which <br />
+                        ones are available. It also displays which occupant is in which room and <br />
+                        can check out an occupant.
 
                     </div>
                 </td>
             </tr>
-        </table>
+        </table>            
 
     </div>
 </asp:Content>

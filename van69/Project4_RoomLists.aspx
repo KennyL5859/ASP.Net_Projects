@@ -79,6 +79,25 @@
                             <asp:ButtonField Text="Check Out" CommandName="CheckOut" HeaderText="&#160;" />
                         </Columns>
                     </asp:GridView>
+
+                    <br />
+                    <br />
+                    <br />
+
+
+                    <asp:SqlDataSource ID="sqlRoomTypes" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionDB01 %>' SelectCommand="SELECT * FROM [van69RoomTypeView]"></asp:SqlDataSource>
+                    <asp:Chart ID="chtRoomTypes" runat="server"
+                         DataSourceID="sqlRoomTypes" Height="400"
+                         Width="400" BackColor="0, 64, 64" BackGradientStyle="DiagonalLeft">
+                        <Series>
+                            <asp:Series Name="Room Types" XValueMember="RoomType" YValueMembers="Number"
+                                 ChartType="Pie"></asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="chaRoomTypes" Area3DStyle-Enable3D="true"></asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+
                 </td>
             </tr>
 
