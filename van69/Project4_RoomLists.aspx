@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Kenneth L. (#69) Room Lists" Language="C#" MasterPageFile="van69.master" AutoEventWireup="true" CodeFile="Project4_RoomLists.aspx.cs" Inherits="van69_Project4_RoomLists" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHeader" runat="Server">
 </asp:Content>
@@ -84,7 +85,7 @@
                     <br />
                     <br />
 
-
+                     
                     <asp:SqlDataSource ID="sqlRoomTypes" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionDB01 %>' SelectCommand="SELECT * FROM [van69RoomTypeView]"></asp:SqlDataSource>
                     <asp:Chart ID="chtRoomTypes" runat="server"
                          DataSourceID="sqlRoomTypes" Height="400"
@@ -97,13 +98,9 @@
                             <asp:ChartArea Name="chaRoomTypes" Area3DStyle-Enable3D="true"></asp:ChartArea>
                         </ChartAreas>
                     </asp:Chart>
-
                 </td>
             </tr>
-
-
         </table>
-
     </div>
 </asp:Content>
 
